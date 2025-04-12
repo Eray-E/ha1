@@ -91,7 +91,7 @@ class CalculatorTest {
 
     //TODO hier weitere Tests erstellen
 
-    // 1. Teilaufgabe
+    // 1. Teilaufgabe: Grüner Test
     @Test
     @DisplayName("should display result after subtracting two positive multi-digit numbers")
     void testPositiveSubtraction(){
