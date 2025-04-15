@@ -109,5 +109,24 @@ class CalculatorTest {
 
         assertEquals(expected,actual);
     }
+
+    // 2. Teilaufgabe
+    @Test
+    @DisplayName("should calculate with the latest value")
+    void testEqualsKey() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(5);
+        calc.pressEqualsKey();
+        calc.pressEqualsKey();
+
+        String expected = "14"; // Im Taschenrechner wird mit der 5 addiert aber im Code mit der 4 (Fehler)
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+
+    }
 }
 
