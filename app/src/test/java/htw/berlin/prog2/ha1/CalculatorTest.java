@@ -112,7 +112,7 @@ class CalculatorTest {
 
     // 2. Teilaufgabe
     @Test
-    @DisplayName("should calculate with the latest value")
+    @DisplayName("should calculate with the latest value") // tipp zu diesem Fehler von Walter Mtanda
     void testEqualsKey() {
         Calculator calc = new Calculator();
 
@@ -127,6 +127,19 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
 
+    }
+
+    @Test
+    @DisplayName("should show the value 0 after pressing the equalskey")
+    void testEqualsKeyWithDefault0(){
+        Calculator calc = new Calculator();
+
+        calc.pressEqualsKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
     }
 }
 
