@@ -116,6 +116,7 @@ public class Calculator {
      * Wird die Taste weitere Male gedrückt (ohne andere Tasten dazwischen), so wird die letzte
      * Operation (ggf. inklusive letztem Operand) erneut auf den aktuellen Bildschirminhalt angewandt
      * und das Ergebnis direkt angezeigt.
+     * Wenn der Taschrechner bei 0 startet und man den EqualsKey drückt,zeigt der Taschenrechner 0 an und wirft keine exception
      */
     public void pressEqualsKey() {
         var result = switch(latestOperation) {
@@ -123,7 +124,7 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
-            default -> throw new IllegalArgumentException();
+            default -> 0;
         };
         screen = Double.toString(result);
         if(screen.equals("Infinity")) screen = "Error";
