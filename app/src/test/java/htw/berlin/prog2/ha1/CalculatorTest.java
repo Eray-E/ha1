@@ -112,17 +112,16 @@ class CalculatorTest {
 
     // 2. Teilaufgabe
     @Test
-    @DisplayName("should calculate with the latest value") // tipp zu diesem Fehler von Walter Mtanda
-    void testEqualsKey() {
+    @DisplayName("should display 10 decimal")
+    void test10Decimal() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(4);
-        calc.pressBinaryOperationKey("+");
         calc.pressDigitKey(5);
-        calc.pressEqualsKey();
+        calc.pressBinaryOperationKey("/");
+        calc.pressDigitKey(6);
         calc.pressEqualsKey();
 
-        String expected = "14"; // Im Taschenrechner wird mit der 5 addiert aber im Code mit der 4 (Fehler)
+        String expected = "0.8333333333";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
