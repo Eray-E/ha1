@@ -118,7 +118,10 @@ public class Calculator {
      * und das Ergebnis direkt angezeigt.
      * Wenn der Taschrechner bei 0 startet und man den EqualsKey drückt,zeigt der Taschenrechner 0 an und wirft keine exception
      */
-    public void pressEqualsKey() {
+    public void pressEqualsKey(){
+        if(latestOperation.isEmpty()){
+            return;
+        }
         var result = switch(latestOperation) {
             case "+" -> latestValue + Double.parseDouble(screen);
             case "-" -> latestValue - Double.parseDouble(screen);
@@ -129,6 +132,6 @@ public class Calculator {
         screen = Double.toString(result);
         if(screen.equals("Infinity")) screen = "Error";
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
-        if(screen.contains(".") && screen.length() > 12) screen = screen.substring(0, 12);
+        if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }
 }
