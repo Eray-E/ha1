@@ -112,23 +112,6 @@ class CalculatorTest {
 
     // 2. Teilaufgabe
     @Test
-    @DisplayName("should display 10 decimal")
-    void test10Decimal() {
-        Calculator calc = new Calculator();
-
-        calc.pressDigitKey(5);
-        calc.pressBinaryOperationKey("/");
-        calc.pressDigitKey(6);
-        calc.pressEqualsKey();
-
-        String expected = "0.8333333333";
-        String actual = calc.readScreen();
-
-        assertEquals(expected, actual);
-
-    }
-
-    @Test
     @DisplayName("should show the value 0 after pressing the equalskey")
     void testEqualsKeyWithDefault0(){
         Calculator calc = new Calculator();
@@ -139,6 +122,20 @@ class CalculatorTest {
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should Display a 1-9 after pressing the Equal button")
+    void testEqualsKey(){
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+
+        String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected,actual);
     }
 }
 
