@@ -14,6 +14,8 @@ public class Calculator {
 
     private String latestOperation = "";
 
+    private boolean cKeyPressedOnce = false; //prüft
+
     /**
      * @return den aktuellen Bildschirminhalt als String
      */
@@ -45,9 +47,14 @@ public class Calculator {
      * im Ursprungszustand ist.
      */
     public void pressClearKey() {
-        screen = "0";
-        latestOperation = "";
-        latestValue = 0.0;
+        if (!cKeyPressedOnce) {
+            screen = "0";
+            cKeyPressedOnce = true;
+        } else {
+            screen = "0";
+            latestOperation = "";
+            latestValue = 0.0;
+        }
     }
 
     /**
@@ -127,7 +134,7 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
-            default -> 0;
+            default ->0;
         };
         screen = Double.toString(result);
         if(screen.equals("Infinity")) screen = "Error";
